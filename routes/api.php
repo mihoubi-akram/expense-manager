@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\Auth\AuthController;
 use App\Http\Controllers\ExpenseController;
+use App\Http\Controllers\ExportController;
 use App\Http\Controllers\StatsController;
 use Illuminate\Support\Facades\Route;
 
@@ -23,4 +24,8 @@ Route::middleware('auth:sanctum')->group(function () {
     Route::post('/expenses/{expense}/pay', [ExpenseController::class, 'pay']);
 
     Route::get('/stats/summary', [StatsController::class, 'summary']);
+
+    Route::post('/exports/expenses', [ExportController::class, 'store']);
+    Route::get('/exports/{export}', [ExportController::class, 'show']);
+    Route::get('/exports/{export}/download', [ExportController::class, 'download'])->name('exports.download');
 });
