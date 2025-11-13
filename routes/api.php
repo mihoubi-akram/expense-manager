@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\Auth\AuthController;
 use App\Http\Controllers\ExpenseController;
+use App\Http\Controllers\StatsController;
 use Illuminate\Support\Facades\Route;
 
 Route::post('/login', [AuthController::class, 'login']);
@@ -20,4 +21,6 @@ Route::middleware('auth:sanctum')->group(function () {
     Route::post('/expenses/{expense}/approve', [ExpenseController::class, 'approve']);
     Route::post('/expenses/{expense}/reject', [ExpenseController::class, 'reject']);
     Route::post('/expenses/{expense}/pay', [ExpenseController::class, 'pay']);
+
+    Route::get('/stats/summary', [StatsController::class, 'summary']);
 });
