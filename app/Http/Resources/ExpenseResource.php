@@ -15,7 +15,7 @@ class ExpenseResource extends JsonResource
             'title' => $this->title,
             'amount' => $this->amount,
             'currency' => $this->currency,
-            'spent_at' => $this->spent_at,
+            'spent_at' => $this->spent_at?->format('Y-m-d'),
             'category' => $this->category,
             'receipt_path' => $this->receipt_path,
             'status' => $this->status,

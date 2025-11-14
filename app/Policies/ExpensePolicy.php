@@ -20,15 +20,11 @@ class ExpensePolicy
 
     public function create(User $user): bool
     {
-        return true;
+        return $user->isEmployee();
     }
 
     public function update(User $user, Expense $expense): bool
     {
-        if ($user->isManager()) {
-            return true;
-        }
-
         if ($user->id !== $expense->user_id) {
             return false;
         }
@@ -44,7 +40,7 @@ class ExpensePolicy
     public function submit(User $user, Expense $expense): bool
     {
         return $user->id === $expense->user_id &&
-               $expense->status === ExpenseStatus::DRAFT;
+               in_array($expense->status, [ExpenseStatus::DRAFT, ExpenseStatus::REJECTED]);
     }
 
     public function approve(User $user, Expense $expense): bool

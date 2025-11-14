@@ -18,3 +18,7 @@ Route::get('/register', function () {
 Route::get('/dashboard', function () {
     return view('employee.dashboard');
 })->name('dashboard');
+
+Route::get('/expenses', function () {
+    return view('employee.expenses');
+})->name('expenses');

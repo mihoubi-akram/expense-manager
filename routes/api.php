@@ -17,7 +17,7 @@ Route::middleware('auth:sanctum')->group(function () {
     Route::post('/expenses', [ExpenseController::class, 'store']);
     Route::get('/expenses/{expense}', [ExpenseController::class, 'show']);
     Route::put('/expenses/{expense}', [ExpenseController::class, 'update']);
-    Route::delete('/expenses/{expense}', [ExpenseController::class, 'destroy']);
+    Route::delete('/expenses/{expense}', [ExpenseController::class, 'destroy']); //Not in requirements but added for completeness
 
     Route::post('/expenses/{expense}/submit', [ExpenseController::class, 'submit']);
     Route::post('/expenses/{expense}/approve', [ExpenseController::class, 'approve']);

@@ -11,8 +11,10 @@
     <nav class="bg-white shadow-sm border-b border-gray-200">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="flex justify-between items-center h-16">
-                <div class="flex items-center">
+                <div class="flex items-center gap-6">
                     <h1 class="text-xl font-semibold text-gray-900">Expense Manager</h1>
+                    <a href="/dashboard" class="text-sm text-blue-600 font-medium">Dashboard</a>
+                    <a href="/expenses" class="text-sm text-gray-600 hover:text-gray-900">My Expenses</a>
                 </div>
                 <div class="flex items-center gap-4">
                     <span id="user-email" class="text-sm text-gray-600"></span>
