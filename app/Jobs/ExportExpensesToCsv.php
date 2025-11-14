@@ -60,9 +60,9 @@ class ExportExpensesToCsv implements ShouldQueue
             $csv = $this->generateCsv($expenses);
 
             // Store CSV file
-            $fileName = "expenses_{$this->export->id}_" . now()->timestamp . '.csv';
-            $filePath = "exports/{$fileName}";
-            Storage::put($filePath, $csv);
+            $fileName = config('exports.filename_prefix') . "_{$this->export->id}_" . now()->timestamp . '.csv';
+            $filePath = config('exports.path') . "/{$fileName}";
+            Storage::disk(config('exports.disk'))->put($filePath, $csv);
 
             // Update export with success status
             $this->export->update([
