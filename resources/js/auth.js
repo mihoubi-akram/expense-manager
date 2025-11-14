@@ -120,8 +120,20 @@ export function checkAuthOnLoad() {
 }
 
 // Redirect if already authenticated (for login/register pages)
-export function redirectIfAuthenticated() {
+export async function redirectIfAuthenticated() {
     if (isAuthenticated()) {
-        window.location.href = '/dashboard';
+        try {
+            const response = await getCurrentUser();
+            const userRole = response.user.role;
+
+            if (userRole === 'manager') {
+                window.location.href = '/manager/expenses';
+            } else {
+                window.location.href = '/expenses';
+            }
+        } catch (error) {
+            // If fetching user fails, just redirect to expenses by default
+            window.location.href = '/expenses';
+        }
     }
 }

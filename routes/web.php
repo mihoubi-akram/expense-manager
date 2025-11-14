@@ -22,3 +22,7 @@ Route::get('/dashboard', function () {
 Route::get('/expenses', function () {
     return view('employee.expenses');
 })->name('expenses');
+
+Route::get('/manager/expenses', function () {
+    return view('manager.expenses');
+})->name('manager.expenses');

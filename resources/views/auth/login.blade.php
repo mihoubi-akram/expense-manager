@@ -125,8 +125,14 @@
                 submitButton.textContent = 'Signing in...';
 
                 try {
-                    await window.auth.login(email, password);
-                    window.location.href = '/dashboard';
+                    const response = await window.auth.login(email, password);
+                    const userRole = response.user.role;
+                    // Redirect based on user role
+                    if (userRole === 'MANAGER') {
+                        window.location.href = '/manager/expenses';
+                    } else {
+                        window.location.href = '/expenses';
+                    }
                 } catch (error) {
                     console.error('Login error:', error);
                     showErrors(error);
